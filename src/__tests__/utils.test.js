@@ -1,15 +1,35 @@
-// Your tests here
-import { isPalindrome } from '../utils'
+import { isPalindrome } from "../utils";
 
-describe ('isPalindrome', ()=>{
+describe("isPalindrome", () => {
+  it("returns true when the word is the same forward and backward", () => {
+    const word = "racecar";
 
-    it ("should return true if the current test is a palindrome", ()=>{
-        const test = isPalindrome
-        expect (isPalindrome('racecar')).toBeTruthy()
-    })
+    const result = isPalindrome(word);
 
-    it ("should return false if the current test is not a palindrome", ()=>{
-        const test = isPalindrome
-        expect (isPalindrome('car')).toBeFalsy()
-    })
-})
+    expect(result).toBe(true);
+  });
+  it("returns false when the word is not the same forward and backward", () => {
+    const word = "car";
+
+    const result = isPalindrome(word);
+
+    expect(result).toBe(false);
+  });
+  it("return true for words that are a combination of uppercase and lowercase letters", () => {
+    const word = "RaCecar";
+
+    const result = isPalindrome(word);
+
+    expect(result).toBe(true);
+  });
+  it("throws an error if the input has any non-alphabetic characters", () => {
+    const word = "race car";
+
+    expect(() => isPalindrome(word)).toThrow();
+  });
+  it("throws an error if the input is an empty string", () => {
+    const word = "";
+
+    expect(() => isPalindrome(word)).toThrow();
+  });
+});
